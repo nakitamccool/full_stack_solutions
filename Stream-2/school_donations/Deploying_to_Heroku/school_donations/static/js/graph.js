@@ -2,16 +2,20 @@ queue()
     .defer(d3.json, "/donorsUS/projects")
     .await(makeGraphs);
 
-function makeGraphs(error, projectsJson) {
+function makeGraphs(error, donorsUSProjects) {
+    if (error) {
+        console.error("makeGraphs error on receiving dataset:", error.statusText);
+        throw error;
+    }
 
-    //Clean projectsJson data
-    var donorsUSProjects = projectsJson;
+    //Clean donorsUSProjects data
     var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
     donorsUSProjects.forEach(function (d) {
         d["date_posted"] = dateFormat.parse(d["date_posted"]);
         d["date_posted"].setDate(1);
         d["total_donations"] = +d["total_donations"];
     });
+
 
     //Create a Crossfilter instance
     var ndx = crossfilter(donorsUSProjects);
@@ -29,10 +33,6 @@ function makeGraphs(error, projectsJson) {
     var stateDim = ndx.dimension(function (d) {
         return d["school_state"];
     });
-    var totalDonationsDim = ndx.dimension(function (d) {
-        return d["total_donations"];
-    });
-
     var fundingStatus = ndx.dimension(function (d) {
         return d["funding_status"];
     });
@@ -54,8 +54,6 @@ function makeGraphs(error, projectsJson) {
         return d["total_donations"];
     });
 
-    var max_state = totalDonationsByState.top(1)[0].value;
-
     //Define values (to be used in charts)
     var minDate = dateDim.bottom(1)[0]["date_posted"];
     var maxDate = dateDim.top(1)[0]["date_posted"];
@@ -67,9 +65,10 @@ function makeGraphs(error, projectsJson) {
     var numberProjectsND = dc.numberDisplay("#number-projects-nd");
     var totalDonationsND = dc.numberDisplay("#total-donations-nd");
     var fundingStatusChart = dc.pieChart("#funding-chart");
+    var selectField = dc.selectMenu('#menu-select');
 
 
-    selectField = dc.selectMenu('#menu-select')
+    selectField
         .dimension(stateDim)
         .group(stateGroup);
 
@@ -130,5 +129,4 @@ function makeGraphs(error, projectsJson) {
 
 
     dc.renderAll();
-
 }
