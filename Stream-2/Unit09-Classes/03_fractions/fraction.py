@@ -43,4 +43,3 @@ class Fraction:
     def __floordiv__(self, other):
         """Divide `self` by `other` using floor division and return a new `Fraction`"""
         return Fraction(self.num // other.den, self.den // other.num)
-

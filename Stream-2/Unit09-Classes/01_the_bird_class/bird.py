@@ -19,5 +19,6 @@ class Bird:
         """
         print("A %s goes %s" % (self._kind, self._call))
 
-owl = Bird('Owl', 'Twit Twoo!')
+owl = Bird('Owl', 'Twit Twoo!'
+
 print(owl._kind)
