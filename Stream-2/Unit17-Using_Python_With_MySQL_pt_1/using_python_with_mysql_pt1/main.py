@@ -1,4 +1,4 @@
-from database.mysql import MySQLDatabase
+from database.mysql_driver import MySQLDatabase
 from settings import db_config
 
 """
@@ -15,9 +15,9 @@ db = MySQLDatabase(db_config.get('db_name'),
 # Get all the available tables for 
 # our database annd print them out.
 tables = db.get_available_tables()
-print tables
+print(tables)
 
 # Get all the available columns for our 
 # articles table and print them out
 columns = db.get_columns_for_table('articles')
-print columns
+print(columns)
