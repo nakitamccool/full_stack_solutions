@@ -1,5 +1,4 @@
-import MySQLdb as _mysql
-
+import pymysql as _mysql
 
 class MySQLDatabase(object):
 	"""
@@ -22,9 +21,9 @@ class MySQLDatabase(object):
 			self.db = _mysql.connect(db=database_name, host=host,
 									 user=username, passwd=password)
 			self.database_name = database_name
-			print "Connected to MySQL!"
-		except _mysql.Error, e:
-			print e
+			print("Connected to MySQL!")
+		except _mysql.Error as e:
+			print(e)
 
 	def __del__(self):
 		"""
@@ -35,7 +34,7 @@ class MySQLDatabase(object):
 		"""
 		if hasattr(self, 'db'):
 			self.db.close()
-			print "MySQL Connection Closed"
+			print("MySQL Connection Closed")
 
 	def get_available_tables(self):
 		"""
