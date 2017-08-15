@@ -43,7 +43,7 @@ print("Where Records: %s" % str(where_expression_records))
 joined_records = db.select('people', ['first_name'], 
 						   where="people.id=3",
 						   join="orders ON people.id=orders.person_id")
-print("Joined records: %s" % str(joined_records))
+print("Joined records: %s" % str(joined_records)
 
 # Delete a record from the database
 db.delete('orders', id="=3")
