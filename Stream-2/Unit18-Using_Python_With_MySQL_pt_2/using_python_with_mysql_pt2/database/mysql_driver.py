@@ -1,4 +1,4 @@
-import MySQLdb as _mysql
+import pymysql as _mysql
 from collections import namedtuple
 
 
@@ -23,9 +23,9 @@ class MySQLDatabase(object):
 			self.db = _mysql.connect(db=database_name, host=host,
 									 user=username, passwd=password)
 			self.database_name = database_name
-			print "Connected to MySQL!"
-		except _mysql.Error, e:
-			print e
+			print("Connected to MySQL!")
+		except _mysql.Error as e:
+			print(e)
 
 	def __del__(self):
 		"""
@@ -36,7 +36,7 @@ class MySQLDatabase(object):
 		"""
 		if hasattr(self, 'db'):
 			self.db.close()
-			print "MySQL Connection Closed"
+			print("MySQL Connection Closed")
 
 	def get_available_tables(self):
 		"""
@@ -59,10 +59,10 @@ class MySQLDatabase(object):
 
 		try:
 			results = map(klass._make, cursor.fetchall())
-		except _mysql.ProgrammingError, e:
-			print e
+		except _mysql.ProgrammingError as e:
+			print(e)
 
-		return results
+		return(results)
 
 	def get_columns_for_table(self, table_name):
 		"""
