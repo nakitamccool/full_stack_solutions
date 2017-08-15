@@ -23,4 +23,4 @@ people = db.select('people', columns=["first_name", "AVG(amount)"
 # Print the results in a format that
 # looks like - "<first_name> spends <average_amount>"
 for person in people:
-    print person.first_name, "spends", person.average_spent
+    print(person.first_name, "spends", person.average_spent)
