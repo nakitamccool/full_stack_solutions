@@ -6,5 +6,5 @@ db_config = {
 	'db_name': 'my_db',
 	'host': 'localhost',
 	'user': 'nakitamccool',
-	'pass': 'root'
+	'pass': ''
 }
