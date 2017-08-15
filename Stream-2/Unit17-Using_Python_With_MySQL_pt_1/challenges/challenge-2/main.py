@@ -1,4 +1,4 @@
-from database.mysql import MySQLDatabase
+from database.mysql_driver import MySQLDatabase
 from settings import db_config
 
 """
@@ -15,4 +15,4 @@ db = MySQLDatabase(db_config.get('db_name'),
 # Get all the available columns for our 
 # orders table and print them out
 columns = db.get_columns_for_table('orders')
-print columns
+print(columns)
