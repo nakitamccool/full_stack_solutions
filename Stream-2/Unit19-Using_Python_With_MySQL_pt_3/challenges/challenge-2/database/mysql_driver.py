@@ -1,4 +1,4 @@
-import MySQLdb as _mysql
+import MySQLdb as _mysql 
 from collections import namedtuple
 import re
 
