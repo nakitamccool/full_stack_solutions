@@ -1,5 +1,5 @@
 import random
-from database.mysql import MySQLDatabase
+from database.mysql_driver import MySQLDatabase
 from settings import db_config
 
 
