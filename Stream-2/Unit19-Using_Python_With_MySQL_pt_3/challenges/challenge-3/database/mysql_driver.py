@@ -108,12 +108,12 @@ class MySQLDatabase(object):
 		sql_str += " FROM `%s`.`%s`" % (self.database_name, table)
 
 		# if there's a JOIN clause attached
-		if kwargs.has_key('join'):
-			sql_str += " JOIN %s" % kwargs.get('join')
+		if 'join' in kwargs:
+			sql_str += " JOIN %s" % kwargs['join']
 
 		# if there's a WHERE clause attached
-		if kwargs.has_key('where'):
-			sql_str += " WHERE %s " % kwargs.get('where')
+		if 'where' in kwargs:
+			sql_str += " WHERE %s " % kwargs['where']
 
 		sql_str += ";" # Finalise our SQL string
 
@@ -143,7 +143,7 @@ class MySQLDatabase(object):
 		if column_names is not None:
 			columns = "("
 			values = "("
-			for arg, value in column_names.iteritems():
+			for arg, value in column_names.items():
 				columns += "`%s`, " % arg
 
 				# Check how we should add this to the columns string
@@ -178,7 +178,7 @@ class MySQLDatabase(object):
 
 		if wheres is not None:
 			first_where_clause = True
-			for where, term in wheres.iteritems():
+			for where, term in wheres.items():
 				if first_where_clause:
 					# This is the first WHERE clause
 					sql_str += " WHERE `%s`.`%s`%s" % (table, where, term)
@@ -206,7 +206,7 @@ class MySQLDatabase(object):
 		sql_str = "UPDATE `%s`.`%s` SET " % (self.database_name, table)
 
 		if column_names is not None:
-			for column_name, value in column_names.iteritems():
+			for column_name, value in column_names.items():
 				sql_str += "`%s`=" % column_name
 
 				# Check how we should add this to the columns string

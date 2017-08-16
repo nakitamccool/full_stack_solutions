@@ -16,16 +16,16 @@ db = MySQLDatabase(db_config.get('db_name'),
 
 # Select a person from the people table
 person = db.select('people', named_tuples=True, where="id=2")[0]
-print person
+print(person)
 
 # Select all orders for that person
 orders = db.select('orders', named_tuples=True,
                    where="person_id=%s" % person.id)
-print orders
+print(orders)
 
 # Iterate over each order
 for order in orders:
-    print order
+    print(order)
     # Update the amount of each order
     db.update('orders', where="id=%s" % order.id, amount="20.02")
 
@@ -37,4 +37,4 @@ new_orders = db.select('orders', named_tuples=True,
 # out each one to ensure that the
 # amount column has been updated.
 for order in new_orders:
-    print order
+    print(order)

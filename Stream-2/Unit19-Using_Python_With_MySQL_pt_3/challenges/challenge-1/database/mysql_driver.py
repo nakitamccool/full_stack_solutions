@@ -178,7 +178,7 @@ class MySQLDatabase(object):
 
 		if wheres is not None:
 			first_where_clause = True
-			for where, term in wheres.iteritems():
+			for where, term in wheres.items():
 				if first_where_clause:
 					# This is the first WHERE clause
 					sql_str += " WHERE `%s`.`%s`%s" % (table, where, term)

@@ -23,7 +23,7 @@ orders = db.select('orders', named_tuples=True,
 
 # Print out each of the records
 for order in orders:
-    print order
+    print(order)
 
 # Execute the delete function without
 # `id='=1'` argument to see what happens
@@ -39,4 +39,4 @@ orders = db.select('orders', where="person_id=%s" % person.id)
 # have been deleted causing
 # the select to return an empty list
 for order in orders:
-    print order
+    print(order)

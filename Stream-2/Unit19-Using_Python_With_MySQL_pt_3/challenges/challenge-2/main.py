@@ -45,4 +45,4 @@ orders = db.select('orders', where='person_id=%s' % april.id)
 # Iterate over the list of results and
 # print each one out to the console
 for order in orders:
-    print order
+    print(order)
