@@ -1,4 +1,4 @@
-from database.mysql import MySQLDatabase
+from database.mysql_driver import MySQLDatabase
 from settings import db_config
 
 """
@@ -14,17 +14,17 @@ db = MySQLDatabase(db_config.get('db_name'),
 
 # Select using the limit clause
 limited_results = db.select('orders', limit='5')
-print "--------------------------------------"
-print "First 5 Results"
-print "--------------------------------------"
+print("--------------------------------------")
+print("First 5 Results")
+print("--------------------------------------")
 # iterate over the list of results
 for result in limited_results:
-	print result
-print "--------------------------------------"
+	print(result)
+print("--------------------------------------")
 
 # Limit the results to 10
 limited_results = db.select('orders', limit='10')
-print "First 10 results"
-print "--------------------------------------"
+print("First 10 results")
+print("--------------------------------------")
 for result in limited_results:
-	print result
+	print(result)

@@ -100,14 +100,14 @@ class MySQLDatabase(object):
 		sql_str += " FROM `%s`.`%s`" % (self.database_name, table)
 
 		# if there's a JOIN clause attached
-		if kwargs.has_key('join'):
-			sql_str += " JOIN %s" % kwargs.get('join')
+		if 'join' in kwargs:
+			sql_str += " JOIN %s" % kwargs['join']
 
 		# if there's a WHERE clause attached
-		if kwargs.has_key('where'):
-			sql_str += " WHERE %s " % kwargs.get('where')
+		if 'where' in kwargs:
+			sql_str += " WHERE %s " % kwargs['where']
 
-		sql_str += ";" # Finalise out SQL string
+		sql_str += ";" # Finalise our SQL string
 
 		cursor = self.db.cursor()
 		cursor.execute(sql_str)
@@ -132,7 +132,7 @@ class MySQLDatabase(object):
 
 		if wheres is not None:
 			first_where_clause = True
-			for where, term in wheres.iteritems():
+			for where, term in wheres.items():
 				if first_where_clause:
 					# This is the first WHERE clause
 					sql_str += " WHERE `%s`.`%s`%s" % (table, where, term)

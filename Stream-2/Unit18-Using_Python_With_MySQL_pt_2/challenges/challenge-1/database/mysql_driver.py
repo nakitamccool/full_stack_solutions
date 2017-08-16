@@ -1,4 +1,4 @@
-import MySQLdb as _mysql
+import pymysql as _mysql
 from collections import namedtuple
 
 
@@ -23,9 +23,9 @@ class MySQLDatabase(object):
 			self.db = _mysql.connect(db=database_name, host=host,
 									 user=username, passwd=password)
 			self.database_name = database_name
-			print "Connected to MySQL!"
-		except _mysql.Error, e:
-			print e
+			print("Connected to MySQL!")
+		except _mysql.Error as e:
+			print(e)
 
 	def __del__(self):
 		"""
@@ -36,7 +36,7 @@ class MySQLDatabase(object):
 		"""
 		if hasattr(self, 'db'):
 			self.db.close()
-			print "MySQL Connection Closed"
+			print("MySQL Connection Closed")
 
 	def get_available_tables(self):
 		"""
@@ -59,8 +59,8 @@ class MySQLDatabase(object):
 
 		try:
 			results = map(klass._make, cursor.fetchall())
-		except _mysql.ProgrammingError, e:
-			print e
+		except _mysql.ProgrammingError as e:
+			print(e)
 
 		return results
 
@@ -100,16 +100,16 @@ class MySQLDatabase(object):
 		sql_str += " FROM `%s`.`%s`" % (self.database_name, table)
 
 		# if there's a JOIN clause attached
-		if kwargs.has_key('join'):
-			sql_str += " JOIN %s" % kwargs.get('join')
+		if 'join' in kwargs:
+			sql_str += " JOIN %s" % kwargs['join']
 
 		# if there's a WHERE clause attached
-		if kwargs.has_key('where'):
-			sql_str += " WHERE %s " % kwargs.get('where')
+		if 'where' in kwargs:
+			sql_str += " WHERE %s " % kwargs['where']
 
 		# if there's a LIMIT clause attached
-		if kwargs.has_key('limit'):
-			sql_str +=" LIMIT %s" % kwargs.get('limit')
+		if 'limit' in kwargs:
+			sql_str += " WHERE %s" % kwargs['limit']
 
 		sql_str += ";" # Finalise out SQL string
 
