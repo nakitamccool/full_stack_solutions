@@ -8,7 +8,7 @@ url = "https://en.wikipedia.org/wiki/Web_scraping"
 
 # Open the URL and read the HTML content into a string variable
 with urllib.request.urlopen(url) as html_page:
-    html_text = html_page.read().decode("utf8")
+    html_text = html_page.read().decode("utf-8")
 
 # Set the range that we want filter on.
 # In this instance everything between the <title></title> tags
