@@ -1,12 +1,14 @@
+#!/usr/bin/env python3
+
 # Import the urlopen function. We need this to read in the HTML
-from urllib2 import urlopen
+import urllib.request
 
 # Set a URL that we'll try to grab some HTML from.
 url = "https://en.wikipedia.org/wiki/Web_scraping"
 
 # Open the URL and read the HTML content into a string variable
-html_page = urlopen(url)
-html_text = html_page.read()
+with urllib.request.urlopen(url) as html_page:
+    html_text = html_page.read().decode("utf8")
 
 # Set the range that we want filter on.
 # In this instance everything between the <title></title> tags
@@ -30,4 +32,4 @@ start_index = html_text.find(start_tag) + len(start_tag)
 end_index = html_text.find(end_tag)
 
 # Print everything between the two indexes in html_text
-print html_text[start_index:end_index]
+print(html_text[start_index:end_index])
