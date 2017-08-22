@@ -23,4 +23,4 @@ person = db.select('people', columns=["CONCAT(first_name, ' ', second_name)"
                    named_tuples=True, where="people.first_name='April'",
                    join="orders ON people.id=orders.person_id")
 
-print(person)
+print(list(person))

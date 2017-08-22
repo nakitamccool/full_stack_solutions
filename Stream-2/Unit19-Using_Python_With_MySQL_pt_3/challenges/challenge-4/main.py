@@ -15,12 +15,12 @@ db = MySQLDatabase(db_config.get('db_name'),
                    db_config.get('host'))
 
 # Select a person from the people table
-person = db.select('people', named_tuples=True, where="id=2")[0]
+person = list(db.select('people', named_tuples=True, where="id=2"))[0]
 print(person)
 
 # Select all orders for that person
-orders = db.select('orders', named_tuples=True,
-                   where="person_id=%s" % person.id)
+orders = list(db.select('orders', named_tuples=True,
+                   where="person_id=%s" % person.id))
 print(orders)
 
 # Iterate over each order

@@ -15,7 +15,7 @@ db = MySQLDatabase(db_config.get('db_name'),
                    db_config.get('host'))
 
 # Select a person from the people table
-person = db.select('people', named_tuples=True, where="id=2")[0]
+person = list(db.select('people', named_tuples=True, where="id=2"))[0]
 
 # Select all orders for that person
 orders = db.select('orders', named_tuples=True,

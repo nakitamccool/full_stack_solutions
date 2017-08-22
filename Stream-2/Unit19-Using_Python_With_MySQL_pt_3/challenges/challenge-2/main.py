@@ -21,7 +21,11 @@ db.insert('people', first_name="April", second_name="ONeil",
 # Retrieve the new person from the people table
 april = db.select('people', ["id", "first_name"], where='first_name="April"',
                   named_tuples=True)
-# We only need the first entry in the list
+                  
+# Convert to a list so we can access it (***Review with YL)
+april = list(april)
+
+# # We only need the first entry in the list
 april = april[0]
 
 # Insert into the profiles table using the
