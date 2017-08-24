@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+import os
 from string import ascii_uppercase
 from random import choice
+
+SCRIPT_PATH = os.path.join(os.getcwd(), os.path.dirname(__file__))
 
 def make_grid(width, height):
     """
@@ -82,6 +86,10 @@ def get_dictionary(dictionary_file):
     """
     Load Dictionary file
     """
+    if not dictionary_file.startswith('/'):
+        # if not absolute, then make path relative to our location:
+        dictionary_file = os.path.join(SCRIPT_PATH, dictionary_file)
+        
     with open("words.txt") as f:
         return [w.strip().upper() for w in f]
         

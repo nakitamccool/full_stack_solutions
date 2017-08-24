@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import unittest
 import boggle
 from string import ascii_uppercase
@@ -100,3 +101,6 @@ class TestBoggle(unittest.TestCase):
         """
         dictionary = boggle.get_dictionary("words.txt")
         self.assertGreater(len(dictionary), 0)
+
+if __name__ == "__main__":
+    unittest.main()

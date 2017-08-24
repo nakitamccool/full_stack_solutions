@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+import os
 from string import ascii_uppercase
 from random import choice
+
+SCRIPT_PATH = os.path.join(os.getcwd(), os.path.dirname(__file__))
 
 def make_grid(width, height):
     """
@@ -79,8 +83,15 @@ def search(grid, dictionary):
     return set(words)
 
 def get_dictionary(dictionary_file):
-    full_words, stems = set(), set()
+    """
+    Load Dictionary file
+    """
+    if not dictionary_file.startswith('/'):
+        # if not absolute, then make path relative to our location:
+        dictionary_file = os.path.join(SCRIPT_PATH, dictionary_file)
 
+    full_words, stems = set(), set()
+    
     with open(dictionary_file) as f:
         for word in f:
             word = word.strip().upper()
@@ -102,10 +113,9 @@ def main():
     """
     This is the function that will run the whole project
     """
+    # Here you can change your grid from a 3x3 to a 2x2 to test run times
     grid = make_grid(4, 4)
-    """
-    Here you can change your grid from a 3x3 to a 2x2 to test run times
-    """
+
     dictionary = get_dictionary("words.txt")
     words = search(grid, dictionary)
     display_words(words)
