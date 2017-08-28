@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from decimal import *
 
 coins = [1, .50, .20, .10, .05, .02, .01]

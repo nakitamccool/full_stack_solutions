@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 # Import the urlopen function. We need this to read in the HTML
 import urllib.request

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import unittest
 from vending_machine import give_change
 

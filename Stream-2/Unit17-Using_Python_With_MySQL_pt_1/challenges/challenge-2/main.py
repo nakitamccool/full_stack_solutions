@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from database.mysql_driver import MySQLDatabase
 from settings import db_config
 

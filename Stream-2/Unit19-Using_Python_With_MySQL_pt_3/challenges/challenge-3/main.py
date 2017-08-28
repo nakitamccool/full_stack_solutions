@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import random
 from database.mysql_driver import MySQLDatabase
 from settings import db_config

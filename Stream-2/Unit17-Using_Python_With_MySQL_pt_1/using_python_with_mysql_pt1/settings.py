@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 These are the settings we'll use in order to
 to connect to our database

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import re
 
 # Using * asterisk - multiple occurrences of the character preceding it

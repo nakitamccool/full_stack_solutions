@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
@@ -9,7 +10,6 @@ MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'donorsUSA'
 COLLECTION_NAME = 'projects'
-
 
 @app.route("/")
 def index():

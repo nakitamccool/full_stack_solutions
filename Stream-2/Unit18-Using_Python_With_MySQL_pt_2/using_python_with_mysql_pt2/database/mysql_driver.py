@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import pymysql as _mysql
 from collections import namedtuple
 
